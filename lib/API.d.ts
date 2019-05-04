@@ -3,6 +3,7 @@
  */
 import { Buxfer } from './Buxfer';
 export declare const RuleOperatorNames: RuleOperators;
+export declare const RuleGroupOperatorNames: RuleGroupOperators;
 export declare type RuleOperators = {
     EQUAL: '=';
     LESS_THAN: '<';
@@ -12,7 +13,6 @@ export declare type RuleOperators = {
     LIKE: '~';
     CONTAINS: 'contains';
 };
-export declare const RuleGroupOperatorNames: RuleGroupOperators;
 export declare type RuleGroupOperators = {
     AND: 'AND';
     OR: 'OR';
@@ -36,4 +36,18 @@ export interface TagRule {
     field: keyof Buxfer.Transaction;
     operator: RuleOperator;
     operands: string[];
+}
+/**
+ * The model that represents an API error
+ */
+export declare class APIErrorResponse {
+    code: number;
+    type: string;
+    message: string;
+    constructor(code: number, type: string, message: string);
+}
+export declare class APIResponse<T> {
+    data: T;
+    success: boolean;
+    constructor(data: T, success?: boolean);
 }

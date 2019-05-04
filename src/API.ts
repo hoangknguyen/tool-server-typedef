@@ -13,6 +13,12 @@ export const RuleOperatorNames: RuleOperators = {
     CONTAINS          : 'contains'
 };
 
+
+export const RuleGroupOperatorNames: RuleGroupOperators = {
+    AND: 'AND',
+    OR : 'OR'
+};
+
 export type RuleOperators = {
     EQUAL: '=',
     LESS_THAN: '<',
@@ -23,10 +29,6 @@ export type RuleOperators = {
     CONTAINS: 'contains'
 };
 
-export const RuleGroupOperatorNames: RuleGroupOperators = {
-    AND: 'AND',
-    OR : 'OR'
-};
 
 export type RuleGroupOperators = {
     AND: 'AND',
@@ -34,6 +36,7 @@ export type RuleGroupOperators = {
 }
 
 export type RuleOperator = RuleOperators[keyof RuleOperators]
+
 export type GroupRuleOperator = RuleGroupOperators[keyof RuleGroupOperators];
 
 /**
@@ -54,4 +57,18 @@ export interface TagRule {
     field: keyof Buxfer.Transaction;
     operator: RuleOperator,
     operands: string[]
+}
+
+
+/**
+ * The model that represents an API error
+ */
+export class APIErrorResponse {
+    constructor(public code: number, public type: string, public message: string) {
+    }
+}
+
+export class APIResponse<T> {
+    constructor(public data: T, public success: boolean = true) {
+    }
 }

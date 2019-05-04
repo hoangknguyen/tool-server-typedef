@@ -1,0 +1,33 @@
+{
+  "name": "tool-server-typedef",
+  "version": "1.0.0",
+  "description": "TypeDef for tool-server",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "files": [
+    "lib/**/*"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hoangknguyen/tool-server-typedef.git"
+  },
+  "keywords": [
+    "typedef",
+    "ts",
+    "tool-server"
+  ],
+  "author": "Hoang Khanh Nguyen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hoangknguyen/tool-server-typedef/issues"
+  },
+  "homepage": "https://github.com/hoangknguyen/tool-server-typedef#readme",
+  "dependencies": {
+    "mongoose": "^5.5.5",
+    "typescript": "^3.4.5"
+  }
+}

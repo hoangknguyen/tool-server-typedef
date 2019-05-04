@@ -2,8 +2,8 @@
   "name": "tool-server-typedef",
   "version": "1.0.0",
   "description": "TypeDef for tool-server",
-  "main": "index.js",
-  "types": "index.d.ts",
+  "main": "lib/index.js",
+  "types": "src/index.d.ts",
   "scripts": {
     "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"

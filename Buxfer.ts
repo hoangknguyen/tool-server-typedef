@@ -1,7 +1,7 @@
-import { SyncAccountType }   from './SyncAccountType';
-import { BuxferAccountType } from './BuxferAccountType';
-import { AccountStatus }     from './AccountStatus';
-import { MessageType }       from './MessageType';
+import { SyncAccountType }   from './models/SyncAccountType';
+import { BuxferAccountType } from './models/BuxferAccountType';
+import { AccountStatus }     from './models/AccountStatus';
+import { MessageType }       from './models/MessageType';
 
 export namespace Buxfer {
     export type ReportCallback = (message: BuxferReport) => void;

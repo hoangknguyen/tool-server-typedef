@@ -74,6 +74,7 @@ export namespace Buxfer {
         referenceId?: string,
         ['type']: BuxferAccountType,
         status: AccountStatus,
+        accountType: SyncAccountType,
         amount: number | string,
         tags: string[],
         description: string

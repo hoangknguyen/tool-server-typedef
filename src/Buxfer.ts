@@ -7,33 +7,33 @@ export namespace Buxfer {
     export type ReportCallback = (message: BuxferReport) => void;
 
     export interface BuxferReport {
-        message: string,
-        timestamp: number,
-        ['type']: MessageType,
-        data?: ReportData
+        message: string;
+        timestamp: number;
+        ['type']: MessageType;
+        data?: ReportData;
     }
 
     export interface ReportData {
-        processed: number
-        failed?: number
-        total: number
+        processed: number;
+        failed?: number;
+        total: number;
     }
 
     export interface UploadResponse extends BuxferResponse {
-        id: string
+        id: string;
     }
 
     export interface BuxferResponse {
-        code: number,
-        status: string
+        code: number;
+        status: string;
     }
 
     export interface BuxferAccount {
-        id: number,
-        name: string,
-        bank: string,
-        balance: number,
-        currency: string
+        id: number;
+        name: string;
+        bank: string;
+        balance: number;
+        currency: string;
     }
 
     export interface TransactionsResponse {
@@ -46,20 +46,20 @@ export namespace Buxfer {
     }
 
     export interface TransactionRequest {
-        accountId?: number,
-        accountName?: string,
-        tagId?: number,
-        tagName?: string,
-        startDate?: string,
-        endDate?: string,
-        month?: string,
-        budgetId?: number,
-        budgetName?: string,
-        contactId?: number,
-        contactName?: string,
-        groupId?: number,
-        groupName?: string,
-        page?: number
+        accountId?: number;
+        accountName?: string;
+        tagId?: number;
+        tagName?: string;
+        startDate?: string;
+        endDate?: string;
+        month?: string;
+        budgetId?: number;
+        budgetName?: string;
+        contactId?: number;
+        contactName?: string;
+        groupId?: number;
+        groupName?: string;
+        page?: number;
     }
 
     export interface AccountsResponse {
@@ -70,14 +70,14 @@ export namespace Buxfer {
     }
 
     export interface Transaction {
-        date: string,
-        referenceId?: string,
-        ['type']: BuxferAccountType,
-        status: AccountStatus,
-        amount: number | string,
-        tags: string[],
-        description: string,
-        accountType: SyncAccountType
+        date: string;
+        referenceId?: string;
+        ['type']: BuxferAccountType;
+        status: AccountStatus;
+        amount: number | string;
+        tags: string[];
+        description: string;
+        accountType: SyncAccountType;
     }
 
     export interface LoginResponse {

@@ -67,6 +67,7 @@ export declare namespace Buxfer {
         amount: number | string;
         tags: string[];
         description: string;
+        accountType: SyncAccountType;
     }
     interface LoginResponse {
         response: {

@@ -74,10 +74,10 @@ export namespace Buxfer {
         referenceId?: string,
         ['type']: BuxferAccountType,
         status: AccountStatus,
-        accountType: SyncAccountType,
         amount: number | string,
         tags: string[],
-        description: string
+        description: string,
+        accountType: SyncAccountType
     }
 
     export interface LoginResponse {

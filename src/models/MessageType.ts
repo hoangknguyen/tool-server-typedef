@@ -4,7 +4,7 @@ const INFO = 'info';
 const ERROR = 'error';
 const COMPLETE = 'complete';
 const DATA = 'data';
-const TRANSACTION = 'Transaction';
+const TRANSACTION = 'transaction';
 
 export const MessageTypeNames: {
     [key in MessageType]: key

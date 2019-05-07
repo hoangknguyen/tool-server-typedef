@@ -8,7 +8,7 @@ export declare namespace Buxfer {
         message: string;
         timestamp: number;
         ['type']: MessageType;
-        data?: ReportData;
+        data?: object;
     }
     interface ReportData {
         processed: number;

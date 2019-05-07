@@ -10,7 +10,7 @@ export namespace Buxfer {
         message: string;
         timestamp: number;
         ['type']: MessageType;
-        data?: ReportData;
+        data?: object;
     }
 
     export interface ReportData {

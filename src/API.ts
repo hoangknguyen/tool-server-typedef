@@ -72,3 +72,11 @@ export class APIResponse<T> {
     constructor(public data: T, public success: boolean = true) {
     }
 }
+
+export interface User {
+    name: string;
+    password: string;
+    email: string;
+    username: string;
+    roles: string[]
+}

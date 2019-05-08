@@ -51,3 +51,10 @@ export declare class APIResponse<T> {
     success: boolean;
     constructor(data: T, success?: boolean);
 }
+export interface User {
+    name: string;
+    password: string;
+    email: string;
+    username: string;
+    roles: string[];
+}

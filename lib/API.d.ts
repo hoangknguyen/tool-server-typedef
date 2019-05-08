@@ -56,5 +56,6 @@ export interface User {
     password: string;
     email: string;
     username: string;
+    salt: string;
     roles: string[];
 }

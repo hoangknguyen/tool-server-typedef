@@ -1,7 +1,7 @@
-import { SyncAccountType }   from './models/SyncAccountType';
-import { BuxferAccountType } from './models/BuxferAccountType';
-import { AccountStatus }     from './models/AccountStatus';
-import { MessageType }       from './models/MessageType';
+import { SyncAccountType } from './models/SyncAccountType';
+import { TransactionType } from './models/TransactionType';
+import { AccountStatus }   from './models/AccountStatus';
+import { MessageType }     from './models/MessageType';
 
 export namespace Buxfer {
     export type ReportCallback = (message: BuxferReport) => void;
@@ -72,7 +72,7 @@ export namespace Buxfer {
     export interface Transaction {
         date: string;
         referenceId?: string;
-        ['type']: BuxferAccountType;
+        ['type']: TransactionType;
         status: AccountStatus;
         amount: number | string;
         tags: string[];
@@ -104,7 +104,7 @@ export namespace Buxfer {
         toAccountId?: number,
         date: string,
         tags?: string,
-        ['type']: BuxferAccountType | string,
+        ['type']: TransactionType | string,
         status: AccountStatus;
     }
 

@@ -7,11 +7,11 @@ const SHARE_BILL = 'sharedBill';
 const PAID_FOR_FRIEND = 'paidForFriend';
 const LOAN = 'loan';
 
-const BuxferAccountTypes = tuple(INCOME, EXPENSE, TRANSFER, REFUND, SHARE_BILL, PAID_FOR_FRIEND, LOAN);
+const TransactionTypes = tuple(INCOME, EXPENSE, TRANSFER, REFUND, SHARE_BILL, PAID_FOR_FRIEND, LOAN);
 
-export type BuxferAccountType = (typeof BuxferAccountTypes)[number];
+export type TransactionType = (typeof TransactionTypes)[number];
 
-export const BuxferAccountTypeNames: { [k in BuxferAccountType]: k } = {
+export const TransactionTypeNames: { [k in TransactionType]: k } = {
     [INCOME]         : INCOME,
     [EXPENSE]        : EXPENSE,
     [TRANSFER]       : TRANSFER,

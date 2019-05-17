@@ -1,7 +1,8 @@
 /**
  * The rule that instruct the tag processing engine to assign tag to a transaction
  */
-import { Buxfer } from './Buxfer';
+import { Buxfer }                            from './Buxfer';
+import { ValidationSchema, ValidationTypes } from 'class-validator';
 
 export const RuleOperatorNames: RuleOperators = {
     EQUAL             : '=',
@@ -48,6 +49,37 @@ export interface TagRuleGroup {
     operator: GroupRuleOperator,
     operands: (TagRule | TagRuleGroup)[]
 }
+
+export const TAG_RULE_GROUP_VALIDATION_ERRORS = {
+    NAME_REQUIRED    : 'Rule Group name is required.',
+    TAGS_EMPTY       : 'Tags must not be empty.',
+    OPERATOR_REQUIRED: 'Operator is required.',
+    OPERAND_EMPTY    : 'Operands must not be empty.'
+};
+
+export const TagRuleGroupSchema: ValidationSchema = {
+    name      : 'tagRuleGroupSchema',
+    properties: {
+        name    : [{
+            type   : ValidationTypes.IS_NOT_EMPTY,
+            message: TAG_RULE_GROUP_VALIDATION_ERRORS.NAME_REQUIRED
+        }],
+        tags    : [{
+            type       : ValidationTypes.MIN_LENGTH,
+            constraints: [1],
+            message    : TAG_RULE_GROUP_VALIDATION_ERRORS.TAGS_EMPTY
+        }],
+        operator: [{
+            type   : ValidationTypes.IS_NOT_EMPTY,
+            message: TAG_RULE_GROUP_VALIDATION_ERRORS.OPERATOR_REQUIRED
+        }],
+        operands: [{
+            type       : ValidationTypes.MIN_LENGTH,
+            constraints: [1],
+            message    : TAG_RULE_GROUP_VALIDATION_ERRORS.OPERAND_EMPTY
+        }]
+    }
+};
 
 /**
  * Interface for tag rule

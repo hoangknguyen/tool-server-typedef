@@ -99,7 +99,7 @@ export const TagRuleSchema: ValidationSchema = {
     name      : 'tagRuleSchema',
     properties: {
         field   : [{
-            type       : ValidationTypes.ARRAY_NOT_EMPTY,
+            type       : ValidationTypes.IS_NOT_EMPTY,
             message    : TAG_RULE_VALIDATION_ERRORS.FIELD_EMPTY
         }],
         operator: [{

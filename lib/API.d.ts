@@ -2,6 +2,7 @@
  * The rule that instruct the tag processing engine to assign tag to a transaction
  */
 import { Buxfer } from './Buxfer';
+import { ValidationSchema } from 'class-validator';
 export declare const RuleOperatorNames: RuleOperators;
 export declare const RuleGroupOperatorNames: RuleGroupOperators;
 export declare type RuleOperators = {
@@ -28,6 +29,13 @@ export interface TagRuleGroup {
     operator: GroupRuleOperator;
     operands: (TagRule | TagRuleGroup)[];
 }
+export declare const TAG_RULE_GROUP_VALIDATION_ERRORS: {
+    NAME_REQUIRED: string;
+    TAGS_EMPTY: string;
+    OPERATOR_REQUIRED: string;
+    OPERAND_EMPTY: string;
+};
+export declare const TagRuleGroupSchema: ValidationSchema;
 /**
  * Interface for tag rule
  */

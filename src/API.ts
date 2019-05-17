@@ -91,6 +91,32 @@ export interface TagRule {
     operands: string[]
 }
 
+export const TAG_RULE_VALIDATION_ERRORS = {
+    FIELD_EMPTY      : 'Field must not be empty.',
+    OPERATOR_REQUIRED: 'Operator is required.',
+    OPERAND_EMPTY    : 'Operands must not be empty.'
+};
+
+export const TagRuleSchema: ValidationSchema = {
+    name      : 'tagRuleSchema',
+    properties: {
+        field   : [{
+            type       : ValidationTypes.MIN_LENGTH,
+            constraints: [1],
+            message    : TAG_RULE_VALIDATION_ERRORS.FIELD_EMPTY
+        }],
+        operator: [{
+            type   : ValidationTypes.IS_NOT_EMPTY,
+            message: TAG_RULE_VALIDATION_ERRORS.OPERATOR_REQUIRED
+        }],
+        operands: [{
+            type       : ValidationTypes.MIN_LENGTH,
+            constraints: [1],
+            message    : TAG_RULE_VALIDATION_ERRORS.OPERAND_EMPTY
+        }]
+    }
+};
+
 
 /**
  * The model that represents an API error

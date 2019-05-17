@@ -45,6 +45,12 @@ export interface TagRule {
     operator: RuleOperator;
     operands: string[];
 }
+export declare const TAG_RULE_VALIDATION_ERRORS: {
+    FIELD_EMPTY: string;
+    OPERATOR_REQUIRED: string;
+    OPERAND_EMPTY: string;
+};
+export declare const TagRuleSchema: ValidationSchema;
 /**
  * The model that represents an API error
  */

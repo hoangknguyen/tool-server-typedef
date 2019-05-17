@@ -65,8 +65,7 @@ export const TagRuleGroupSchema: ValidationSchema = {
             message: TAG_RULE_GROUP_VALIDATION_ERRORS.NAME_REQUIRED
         }],
         tags    : [{
-            type       : ValidationTypes.MIN_LENGTH,
-            constraints: [1],
+            type       : ValidationTypes.ARRAY_NOT_EMPTY,
             message    : TAG_RULE_GROUP_VALIDATION_ERRORS.TAGS_EMPTY
         }],
         operator: [{
@@ -74,8 +73,7 @@ export const TagRuleGroupSchema: ValidationSchema = {
             message: TAG_RULE_GROUP_VALIDATION_ERRORS.OPERATOR_REQUIRED
         }],
         operands: [{
-            type       : ValidationTypes.MIN_LENGTH,
-            constraints: [1],
+            type       : ValidationTypes.ARRAY_NOT_EMPTY,
             message    : TAG_RULE_GROUP_VALIDATION_ERRORS.OPERAND_EMPTY
         }]
     }
@@ -101,8 +99,7 @@ export const TagRuleSchema: ValidationSchema = {
     name      : 'tagRuleSchema',
     properties: {
         field   : [{
-            type       : ValidationTypes.MIN_LENGTH,
-            constraints: [1],
+            type       : ValidationTypes.ARRAY_NOT_EMPTY,
             message    : TAG_RULE_VALIDATION_ERRORS.FIELD_EMPTY
         }],
         operator: [{
@@ -110,8 +107,7 @@ export const TagRuleSchema: ValidationSchema = {
             message: TAG_RULE_VALIDATION_ERRORS.OPERATOR_REQUIRED
         }],
         operands: [{
-            type       : ValidationTypes.MIN_LENGTH,
-            constraints: [1],
+            type       : ValidationTypes.ARRAY_NOT_EMPTY,
             message    : TAG_RULE_VALIDATION_ERRORS.OPERAND_EMPTY
         }]
     }

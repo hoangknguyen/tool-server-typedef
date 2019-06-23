@@ -5,5 +5,6 @@ export type Snippet = {
     createdDate: number,
     userId: string,
     tags?: string[],
+    theme?: string,
     content: string
 }

@@ -1,11 +1,12 @@
 {
-  "name": "tool-server-typedef",
-  "version": "1.0.0",
-  "description": "TypeDef for tool-server",
+  "name": "@nkhoang.it/tool-server-typedef",
+  "version": "1.0.1",
+  "description": "tool-server Type Definition",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "release": "tsc && npm pack && npm publish --access public"
   },
   "files": [
     "lib/**/*"
@@ -29,5 +30,9 @@
     "class-validator": "^0.9.1",
     "mongoose": "^5.5.5",
     "typescript": "^3.4.5"
-  }
+  },
+  "directories": {
+    "lib": "lib"
+  },
+  "devDependencies": {}
 }

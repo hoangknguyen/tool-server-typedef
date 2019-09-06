@@ -64,7 +64,7 @@ export declare namespace Buxfer {
         referenceId?: string;
         ['type']?: TransactionType;
         status: AccountStatus;
-        amount: number | string;
+        amount?: number | string;
         tags: string[];
         description: string;
         accountType: SyncAccountType;

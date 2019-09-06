@@ -62,7 +62,7 @@ export declare namespace Buxfer {
     interface Transaction {
         date: string;
         referenceId?: string;
-        ['type']: TransactionType;
+        ['type']?: TransactionType;
         status: AccountStatus;
         amount: number | string;
         tags: string[];

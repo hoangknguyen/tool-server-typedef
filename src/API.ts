@@ -144,7 +144,7 @@ export const TransactionSchema: ValidationSchema = {
         groups : [TRANSACTION_VALIDATION_GROUPS.FULL]
       },
       {
-        type   : ValidationTypes.IS_NUMBER_STRING,
+        type   : ValidationTypes.IS_NUMBER,
         message: TRANSACTION_VALIDATION_ERRORS.AMOUNT_IS_NUMBER,
         groups : [TRANSACTION_VALIDATION_GROUPS.FULL]
       }

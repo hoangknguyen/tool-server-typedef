@@ -3,7 +3,7 @@ import { TransactionType } from './models/TransactionType';
 import { AccountStatus } from './models/AccountStatus';
 import { MessageType } from './models/MessageType';
 export declare namespace Buxfer {
-    type ReportCallback = (message: BuxferMessage) => void;
+    type MessageCallback = (message: BuxferMessage) => void;
     interface BuxferMessage {
         message: string;
         timestamp: number;

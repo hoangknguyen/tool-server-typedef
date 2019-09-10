@@ -4,7 +4,7 @@ import { AccountStatus }   from './models/AccountStatus';
 import { MessageType }     from './models/MessageType';
 
 export namespace Buxfer {
-  export type ReportCallback = (message: BuxferMessage) => void;
+  export type MessageCallback = (message: BuxferMessage) => void;
 
   export interface BuxferMessage {
     message: string;

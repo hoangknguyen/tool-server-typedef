@@ -36,6 +36,21 @@ export declare const TAG_RULE_GROUP_VALIDATION_ERRORS: {
     OPERAND_EMPTY: string;
 };
 export declare const TagRuleGroupSchema: ValidationSchema;
+export declare const TRANSACTION_VALIDATION_ERRORS: {
+    DATE_REQUIRED: string;
+    STATUS_REQUIRED: string;
+    TAGS_IS_ARRAY: string;
+    DESCRIPTION_REQUIRED: string;
+    TYPE_REQUIRED: string;
+    ACCOUNT_TYPE_REQUIRED: string;
+    AMOUNT_REQUIRED: string;
+    AMOUNT_IS_NUMBER: string;
+};
+export declare const TRANSACTION_VALIDATION_GROUPS: {
+    BASIC: string;
+    FULL: string;
+};
+export declare const TransactionSchema: ValidationSchema;
 /**
  * Interface for tag rule
  */

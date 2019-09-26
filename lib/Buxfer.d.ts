@@ -15,6 +15,9 @@ export declare namespace Buxfer {
         failed?: number;
         total: number;
     }
+    /**
+     * The type of the response when a file is uploaded successfully
+     */
     interface UploadResponse extends BuxferResponse {
         id: string;
     }

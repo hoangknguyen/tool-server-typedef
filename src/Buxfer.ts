@@ -19,6 +19,9 @@ export namespace Buxfer {
     total: number;
   }
 
+  /**
+   * The type of the response when a file is uploaded successfully
+   */
   export interface UploadResponse extends BuxferResponse {
     id: string;
   }

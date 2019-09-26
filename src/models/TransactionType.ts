@@ -1,22 +1,13 @@
-import { tuple } from '../utils/utils';
-const INCOME = 'income';
-const EXPENSE = 'expense';
-const TRANSFER = 'transfer';
-const REFUND = 'refund';
-const SHARE_BILL = 'sharedBill';
-const PAID_FOR_FRIEND = 'paidForFriend';
-const LOAN = 'loan';
+import { t } from '../utils/utils';
 
-const TransactionTypes = tuple(INCOME, EXPENSE, TRANSFER, REFUND, SHARE_BILL, PAID_FOR_FRIEND, LOAN);
+export const TransactionTypes = t({
+  INCOME         : 'income',
+  EXPENSE        : 'expense',
+  TRANSFER       : 'transfer',
+  REFUND         : 'refund',
+  SHARE_BILL     : 'sharedBill',
+  PAID_FOR_FRIEND: 'paidForFriend',
+  LOAN           : 'loan'
+});
 
-export type TransactionType = (typeof TransactionTypes)[number];
-
-export const TransactionTypeNames: { [k in TransactionType]: k } = {
-    [INCOME]         : INCOME,
-    [EXPENSE]        : EXPENSE,
-    [TRANSFER]       : TRANSFER,
-    [REFUND]         : REFUND,
-    [SHARE_BILL]     : SHARE_BILL,
-    [PAID_FOR_FRIEND]: PAID_FOR_FRIEND,
-    [LOAN]           : LOAN
-};
+export type TransactionType = typeof TransactionTypes[keyof typeof TransactionTypes];

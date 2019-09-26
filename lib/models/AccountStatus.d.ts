@@ -1,6 +1,6 @@
-declare const AccountStatuses: ["pending", "cleared"];
-export declare type AccountStatus = (typeof AccountStatuses)[number];
-export declare const AccountStatusNames: {
-    [k in AccountStatus]: k;
+export declare const AccountStatuses: {
+    PENDING: "pending";
+    CLEARED: "cleared";
+    COMPLETED: "completed";
 };
-export {};
+export declare type AccountStatus = typeof AccountStatuses[keyof typeof AccountStatuses];

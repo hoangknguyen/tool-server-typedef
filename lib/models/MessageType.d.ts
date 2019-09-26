@@ -1,9 +1,11 @@
-export declare const MessageTypeNames: {
-    [key in MessageType]: key;
+export declare const MessageTypes: {
+    INFO: "info";
+    ERROR: "error";
+    COMPLETE: "complete";
+    DATA: "data";
+    TRANSACTION: "transaction";
 };
-declare const MessageTypes: ["info", "error", "complete", "data", "transaction"];
 /**
  * Load client configuration then build the TYPE
  */
-export declare type MessageType = (typeof MessageTypes)[number];
-export {};
+export declare type MessageType = typeof MessageTypes[keyof typeof MessageTypes];

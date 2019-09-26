@@ -3,8 +3,9 @@
  */
 import { Buxfer }                            from './Buxfer';
 import { ValidationSchema, ValidationTypes } from 'class-validator';
+import { t }                                 from './utils/utils';
 
-export const RuleOperatorNames: RuleOperators = {
+export const RuleOperators = t({
   EQUAL             : '=',
   LESS_THAN         : '<',
   GREATER_THAN      : '>',
@@ -12,33 +13,16 @@ export const RuleOperatorNames: RuleOperators = {
   LIKE              : '~',
   GREATER_THAN_EQUAL: '>=',
   CONTAINS          : 'contains'
-};
+});
 
+export type RuleOperator = typeof RuleOperators[keyof typeof RuleOperators];
 
-export const RuleGroupOperatorNames: RuleGroupOperators = {
+export const RuleGroupOperators = t({
   AND: 'AND',
   OR : 'OR'
-};
+});
 
-export type RuleOperators = {
-  EQUAL: '=',
-  LESS_THAN: '<',
-  GREATER_THAN: '>',
-  LESS_THAN_EQUAL: '<=',
-  GREATER_THAN_EQUAL: '>=',
-  LIKE: '~',
-  CONTAINS: 'contains'
-};
-
-
-export type RuleGroupOperators = {
-  AND: 'AND',
-  OR: 'OR'
-}
-
-export type RuleOperator = RuleOperators[keyof RuleOperators]
-
-export type GroupRuleOperator = RuleGroupOperators[keyof RuleGroupOperators];
+export type GroupRuleOperator = typeof RuleGroupOperators[keyof typeof RuleGroupOperators];
 
 /**
  * Group of tag rules

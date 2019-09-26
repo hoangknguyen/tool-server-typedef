@@ -1,14 +1,9 @@
-import { tuple } from '../utils/utils';
-
-const PENDING = 'pending';
-const CLEARED = 'cleared';
-
+import { t } from '../utils/utils';
 // creating type
-const AccountStatuses = tuple(PENDING, CLEARED);
+export const AccountStatuses = t({
+  PENDING: 'pending',
+  CLEARED: 'cleared',
+  COMPLETED: 'completed'
+});
 
-export type AccountStatus = (typeof AccountStatuses)[number];
-
-export const AccountStatusNames: { [k in AccountStatus]: k } = {
-    [PENDING]: PENDING,
-    [CLEARED]: CLEARED
-};
+export type AccountStatus = typeof AccountStatuses[keyof typeof AccountStatuses];

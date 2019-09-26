@@ -1,9 +1,5 @@
-export declare const SyncAccountTypeNames: {
-    [key in SyncAccountType]: key;
+export declare const SyncAccountTypes: {
+    HSBC: "HSBC";
+    VIETCOMBANK: "VIETCOMBANK";
 };
-declare const SyncAccountTypes: ["HSBC", "VIETCOMBANK"];
-/**
- * Load client configuration then build the TYPE
- */
-export declare type SyncAccountType = (typeof SyncAccountTypes)[number];
-export {};
+export declare type SyncAccountType = typeof SyncAccountTypes[keyof typeof SyncAccountTypes];

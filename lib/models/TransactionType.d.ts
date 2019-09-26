@@ -1,6 +1,10 @@
-declare const TransactionTypes: ["income", "expense", "transfer", "refund", "sharedBill", "paidForFriend", "loan"];
-export declare type TransactionType = (typeof TransactionTypes)[number];
-export declare const TransactionTypeNames: {
-    [k in TransactionType]: k;
+export declare const TransactionTypes: {
+    INCOME: "income";
+    EXPENSE: "expense";
+    TRANSFER: "transfer";
+    REFUND: "refund";
+    SHARE_BILL: "sharedBill";
+    PAID_FOR_FRIEND: "paidForFriend";
+    LOAN: "loan";
 };
-export {};
+export declare type TransactionType = typeof TransactionTypes[keyof typeof TransactionTypes];

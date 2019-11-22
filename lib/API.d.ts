@@ -1,8 +1,8 @@
 /**
  * The rule that instruct the tag processing engine to assign tag to a transaction
  */
-import { Buxfer } from './Buxfer';
 import { ValidationSchema } from 'class-validator';
+import { Buxfer } from './Buxfer';
 export declare const RuleOperators: {
     EQUAL: "=";
     LESS_THAN: "<";
@@ -32,6 +32,10 @@ export declare const TAG_RULE_GROUP_VALIDATION_ERRORS: {
     TAGS_EMPTY: string;
     OPERATOR_REQUIRED: string;
     OPERAND_EMPTY: string;
+};
+export declare const TAG_RULE_GROUP_VALIDATION_GROUPS: {
+    NESTED: string;
+    ROOT: string;
 };
 export declare const TagRuleGroupSchema: ValidationSchema;
 export declare const TRANSACTION_VALIDATION_ERRORS: {

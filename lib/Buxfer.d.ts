@@ -4,6 +4,11 @@ import { SyncAccountType } from './models/SyncAccountType';
 import { TransactionType } from './models/TransactionType';
 export declare namespace Buxfer {
     type MessageCallback = (message: BuxferMessage) => void;
+    interface ReportRequest {
+        minDate: string;
+        maxDate: string;
+        tags: string[];
+    }
     /**
      * Sum of all transactions tagged with the tag name
      */

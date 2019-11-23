@@ -6,6 +6,12 @@ import { TransactionType } from './models/TransactionType';
 export namespace Buxfer {
     export type MessageCallback = (message: BuxferMessage) => void;
 
+    export interface ReportRequest {
+        minDate: string,
+        maxDate: string,
+        tags: string[]
+    }
+
     /**
      * Sum of all transactions tagged with the tag name
      */

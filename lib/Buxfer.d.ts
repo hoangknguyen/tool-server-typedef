@@ -1,9 +1,27 @@
-import { SyncAccountType } from './models/SyncAccountType';
-import { TransactionType } from './models/TransactionType';
 import { AccountStatus } from './models/AccountStatus';
 import { MessageType } from './models/MessageType';
+import { SyncAccountType } from './models/SyncAccountType';
+import { TransactionType } from './models/TransactionType';
 export declare namespace Buxfer {
     type MessageCallback = (message: BuxferMessage) => void;
+    /**
+     * Sum of all transactions tagged with the tag name
+     */
+    interface TagSum {
+        tagName: string;
+        total: number;
+    }
+    interface TagsResponse {
+        response: {
+            status: string;
+            tags: Tag[];
+        };
+    }
+    interface Tag {
+        id: string;
+        name: string;
+        parentId: string;
+    }
     interface BuxferMessage {
         message: string;
         timestamp: number;

@@ -4,6 +4,15 @@ import { SyncAccountType } from './models/SyncAccountType';
 import { TransactionType } from './models/TransactionType';
 export declare namespace Buxfer {
     type MessageCallback = (message: BuxferMessage) => void;
+    interface WebApiResponse {
+        status: string;
+        mesg: string;
+        html: string;
+        sysError: number;
+        authToken: string;
+        invalidatedDataTypes: number[];
+        script: string;
+    }
     interface ReportRequest {
         minDate: string;
         maxDate: string;

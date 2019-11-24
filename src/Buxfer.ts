@@ -6,6 +6,16 @@ import { TransactionType } from './models/TransactionType';
 export namespace Buxfer {
     export type MessageCallback = (message: BuxferMessage) => void;
 
+    export interface WebApiResponse {
+        status: string,
+        mesg: string,
+        html: string,
+        sysError: number,
+        authToken: string,
+        invalidatedDataTypes: number[],
+        script: string
+    }
+
     export interface ReportRequest {
         minDate: string,
         maxDate: string,

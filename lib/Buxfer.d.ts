@@ -150,6 +150,14 @@ export declare namespace Buxfer {
         tags: string;
         tagNames: string[];
         status: string;
+        fromAccount: {
+            id: number;
+            name: string;
+        };
+        toAccount: {
+            id: number;
+            name: string;
+        };
         isFutureDated: boolean;
     }
 }

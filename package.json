@@ -1,6 +1,6 @@
 {
   "name": "tool-server-typedef",
-  "version": "1.1.0",
+  "version": "1.1.8",
   "description": "tool-server Type Definition",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
@@ -28,8 +28,8 @@
   "homepage": "https://github.com/hoangknguyen/tool-server-typedef#readme",
   "dependencies": {
     "class-validator": "^0.11.0",
-    "mongoose": "^5.7.12",
-    "typescript": "^3.7.2"
+    "mongoose": "^5.7.14",
+    "typescript": "^3.7.3"
   },
   "directories": {
     "lib": "lib"

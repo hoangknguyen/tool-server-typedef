@@ -103,6 +103,9 @@ export declare namespace Buxfer {
         tags: string[];
         description: string;
         accountType: SyncAccountType;
+        accountId?: number;
+        fromAccountId?: number;
+        toAccountId?: number;
     }
     interface LoginResponse {
         response: {

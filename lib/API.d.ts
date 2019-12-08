@@ -3,6 +3,13 @@
  */
 import { ValidationSchema } from 'class-validator';
 import { Buxfer } from './Buxfer';
+export declare const RuleActionTypes: {
+    DELETE: "delete";
+    MODIFY: "modify";
+    ADD_TAGS: "add_tags";
+    REMOVE_TAGS: "remove_tags";
+};
+export declare type RuleActionType = typeof RuleActionTypes[keyof typeof RuleActionTypes];
 export declare const RuleOperators: {
     EQUAL: "=";
     LESS_THAN: "<";
@@ -18,6 +25,24 @@ export declare const RuleGroupOperators: {
     OR: "OR";
 };
 export declare type GroupRuleOperator = typeof RuleGroupOperators[keyof typeof RuleGroupOperators];
+export declare type Action<O, T> = {
+    data?: T;
+    order?: number;
+    t?: RuleActionType;
+    doAction(o: O, chain: ActionChain<O>): O | undefined;
+};
+export interface ActionChain<O> {
+    doAction(o: O): O | undefined;
+    hasNext(): boolean;
+}
+/**
+ * The model represents the action of the user on the transaction. Each action
+ * includes a property for the field name and a property for the field value
+ */
+export interface FieldModifier {
+    field: keyof Buxfer.Transaction;
+    value: Buxfer.Transaction[keyof Buxfer.Transaction];
+}
 /**
  * Group of tag rules
  */
@@ -26,6 +51,7 @@ export interface TagRuleGroup {
     tags: string[];
     operator: GroupRuleOperator;
     operands: (TagRule | TagRuleGroup)[];
+    actions?: Action<Buxfer.Transaction, any>[];
 }
 export declare const TAG_RULE_GROUP_VALIDATION_ERRORS: {
     NAME_REQUIRED: string;

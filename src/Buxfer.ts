@@ -118,6 +118,9 @@ export namespace Buxfer {
         tags: string[];
         description: string;
         accountType: SyncAccountType;
+        accountId?: number;
+        fromAccountId?: number;
+        toAccountId?: number;
     }
 
     export interface LoginResponse {

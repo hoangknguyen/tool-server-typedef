@@ -5,6 +5,15 @@ import { ValidationSchema, ValidationTypes } from 'class-validator';
 import { Buxfer }                            from './Buxfer';
 import { t }                                 from './utils/utils';
 
+export const RuleActionTypes = t({
+    DELETE     : 'delete',
+    MODIFY     : 'modify',
+    ADD_TAGS   : 'add_tags',
+    REMOVE_TAGS: 'remove_tags'
+});
+
+export type RuleActionType = typeof RuleActionTypes[keyof typeof RuleActionTypes];
+
 export const RuleOperators = t({
     EQUAL             : '=',
     LESS_THAN         : '<',
@@ -24,6 +33,32 @@ export const RuleGroupOperators = t({
 
 export type GroupRuleOperator = typeof RuleGroupOperators[keyof typeof RuleGroupOperators];
 
+export type Action<O, T> = {
+    data?: T,
+    // keeping the order to make sure the action are run in the expected order
+    order?: number,
+    t?: RuleActionType,
+
+    doAction(o: O, chain: ActionChain<O>): O | undefined
+}
+
+
+export interface ActionChain<O> {
+    doAction(o: O): O | undefined;
+
+    hasNext(): boolean;
+}
+
+/**
+ * The model represents the action of the user on the transaction. Each action
+ * includes a property for the field name and a property for the field value
+ */
+export interface FieldModifier {
+    field: keyof Buxfer.Transaction,
+    value: Buxfer.Transaction[keyof Buxfer.Transaction]
+}
+
+
 /**
  * Group of tag rules
  */
@@ -31,7 +66,8 @@ export interface TagRuleGroup {
     name?: string,
     tags: string[],
     operator: GroupRuleOperator,
-    operands: (TagRule | TagRuleGroup)[]
+    operands: (TagRule | TagRuleGroup)[],
+    actions?: Action<Buxfer.Transaction, any>[]
 }
 
 export const TAG_RULE_GROUP_VALIDATION_ERRORS = {

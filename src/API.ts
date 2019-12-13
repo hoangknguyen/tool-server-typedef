@@ -1,9 +1,24 @@
 /**
  * The rule that instruct the tag processing engine to assign tag to a transaction
  */
-import { ValidationSchema, ValidationTypes } from 'class-validator';
-import { Buxfer }                            from './Buxfer';
-import { t }                                 from './utils/utils';
+import {
+    ValidationSchema,
+    ValidationTypes
+}                 from 'class-validator';
+import { Buxfer } from './Buxfer';
+import { t }      from './utils/utils';
+
+// we could configure the field type inside a property file
+// this is just to be used as a constant in the UI
+export const FieldTypes = t({
+    ARRAY  : 'array',
+    STRING : 'string',
+    NUMBER : 'number',
+    DATE   : 'date',
+    BOOLEAN: 'boolean'
+});
+
+export type FieldType = typeof FieldTypes[keyof typeof FieldTypes];
 
 export const RuleActionTypes = t({
     DELETE     : 'delete',
@@ -14,7 +29,7 @@ export const RuleActionTypes = t({
 
 export type RuleActionType = typeof RuleActionTypes[keyof typeof RuleActionTypes];
 
-export const RuleOperators = t({
+export const MatchingRuleOperators = t({
     EQUAL             : '=',
     LESS_THAN         : '<',
     GREATER_THAN      : '>',
@@ -24,14 +39,14 @@ export const RuleOperators = t({
     CONTAINS          : 'contains'
 });
 
-export type RuleOperator = typeof RuleOperators[keyof typeof RuleOperators];
+export type MatchingRuleOperator = typeof MatchingRuleOperators[keyof typeof MatchingRuleOperators];
 
-export const RuleGroupOperators = t({
+export const MatchingGroupOperators = t({
     AND: 'AND',
     OR : 'OR'
 });
 
-export type GroupRuleOperator = typeof RuleGroupOperators[keyof typeof RuleGroupOperators];
+export type MatchingRuleGroupOperator = typeof MatchingGroupOperators[keyof typeof MatchingGroupOperators];
 
 export type Action<O, T> = {
     data?: T,
@@ -62,48 +77,48 @@ export interface FieldModifier {
 /**
  * Group of tag rules
  */
-export interface TagRuleGroup {
+export interface MatchingRuleGroup {
     name?: string,
     tags: string[],
-    operator: GroupRuleOperator,
-    operands: (TagRule | TagRuleGroup)[],
+    operator: MatchingRuleGroupOperator,
+    operands: (MatchingRule | MatchingRuleGroup)[],
     actions?: Action<Buxfer.Transaction, any>[]
 }
 
-export const TAG_RULE_GROUP_VALIDATION_ERRORS = {
+export const MATCHING_RULE_GROUP_VALIDATION_ERRORS = {
     NAME_REQUIRED    : 'Rule Group name is required.',
     TAGS_EMPTY       : 'Tags must not be empty.',
     OPERATOR_REQUIRED: 'Operator is required.',
     OPERAND_EMPTY    : 'Operands must not be empty.'
 };
 
-export const TAG_RULE_GROUP_VALIDATION_GROUPS = {
+export const MATCHING_RULE_GROUP_VALIDATION_GROUPS = {
     NESTED: 'NESTED',
     ROOT  : 'ROOT'
 };
 
-export const TagRuleGroupSchema: ValidationSchema = {
-    name      : 'tagRuleGroupSchema',
+export const MatchingRuleGroupSchema: ValidationSchema = {
+    name      : 'matchingRuleGroupSchema',
     properties: {
         name    : [{
             type   : ValidationTypes.IS_NOT_EMPTY,
-            message: TAG_RULE_GROUP_VALIDATION_ERRORS.NAME_REQUIRED,
-            groups : [TAG_RULE_GROUP_VALIDATION_GROUPS.NESTED, TAG_RULE_GROUP_VALIDATION_GROUPS.ROOT]
+            message: MATCHING_RULE_GROUP_VALIDATION_ERRORS.NAME_REQUIRED,
+            groups : [MATCHING_RULE_GROUP_VALIDATION_GROUPS.NESTED, MATCHING_RULE_GROUP_VALIDATION_GROUPS.ROOT]
         }],
         tags    : [{
             type   : ValidationTypes.ARRAY_NOT_EMPTY,
-            message: TAG_RULE_GROUP_VALIDATION_ERRORS.TAGS_EMPTY,
-            groups : [TAG_RULE_GROUP_VALIDATION_GROUPS.ROOT]
+            message: MATCHING_RULE_GROUP_VALIDATION_ERRORS.TAGS_EMPTY,
+            groups : [MATCHING_RULE_GROUP_VALIDATION_GROUPS.ROOT]
         }],
         operator: [{
             type   : ValidationTypes.IS_NOT_EMPTY,
-            message: TAG_RULE_GROUP_VALIDATION_ERRORS.OPERATOR_REQUIRED,
-            groups : [TAG_RULE_GROUP_VALIDATION_GROUPS.NESTED, TAG_RULE_GROUP_VALIDATION_GROUPS.ROOT]
+            message: MATCHING_RULE_GROUP_VALIDATION_ERRORS.OPERATOR_REQUIRED,
+            groups : [MATCHING_RULE_GROUP_VALIDATION_GROUPS.NESTED, MATCHING_RULE_GROUP_VALIDATION_GROUPS.ROOT]
         }],
         operands: [{
             type   : ValidationTypes.ARRAY_NOT_EMPTY,
-            message: TAG_RULE_GROUP_VALIDATION_ERRORS.OPERAND_EMPTY,
-            groups : [TAG_RULE_GROUP_VALIDATION_GROUPS.NESTED, TAG_RULE_GROUP_VALIDATION_GROUPS.ROOT]
+            message: MATCHING_RULE_GROUP_VALIDATION_ERRORS.OPERAND_EMPTY,
+            groups : [MATCHING_RULE_GROUP_VALIDATION_GROUPS.NESTED, MATCHING_RULE_GROUP_VALIDATION_GROUPS.ROOT]
         }]
     }
 };
@@ -186,33 +201,33 @@ export const TransactionSchema: ValidationSchema = {
 /**
  * Interface for tag rule
  */
-export interface TagRule {
+export interface MatchingRule {
     name?: string,
     field: keyof Buxfer.Transaction;
-    operator: RuleOperator,
+    operator: MatchingRuleOperator,
     operands: string[]
 }
 
-export const TAG_RULE_VALIDATION_ERRORS = {
+export const MATCHING_RULE_VALIDATION_ERRORS = {
     FIELD_EMPTY      : 'Field must not be empty.',
     OPERATOR_REQUIRED: 'Operator is required.',
     OPERAND_EMPTY    : 'Operands must not be empty.'
 };
 
-export const TagRuleSchema: ValidationSchema = {
-    name      : 'tagRuleSchema',
+export const MatchingRuleSchema: ValidationSchema = {
+    name      : 'matchingRuleSchema',
     properties: {
         field   : [{
             type   : ValidationTypes.IS_NOT_EMPTY,
-            message: TAG_RULE_VALIDATION_ERRORS.FIELD_EMPTY
+            message: MATCHING_RULE_VALIDATION_ERRORS.FIELD_EMPTY
         }],
         operator: [{
             type   : ValidationTypes.IS_NOT_EMPTY,
-            message: TAG_RULE_VALIDATION_ERRORS.OPERATOR_REQUIRED
+            message: MATCHING_RULE_VALIDATION_ERRORS.OPERATOR_REQUIRED
         }],
         operands: [{
             type   : ValidationTypes.ARRAY_NOT_EMPTY,
-            message: TAG_RULE_VALIDATION_ERRORS.OPERAND_EMPTY
+            message: MATCHING_RULE_VALIDATION_ERRORS.OPERAND_EMPTY
         }]
     }
 };

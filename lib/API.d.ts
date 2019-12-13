@@ -3,6 +3,14 @@
  */
 import { ValidationSchema } from 'class-validator';
 import { Buxfer } from './Buxfer';
+export declare const FieldTypes: {
+    ARRAY: "array";
+    STRING: "string";
+    NUMBER: "number";
+    DATE: "date";
+    BOOLEAN: "boolean";
+};
+export declare type FieldType = typeof FieldTypes[keyof typeof FieldTypes];
 export declare const RuleActionTypes: {
     DELETE: "delete";
     MODIFY: "modify";
@@ -10,7 +18,7 @@ export declare const RuleActionTypes: {
     REMOVE_TAGS: "remove_tags";
 };
 export declare type RuleActionType = typeof RuleActionTypes[keyof typeof RuleActionTypes];
-export declare const RuleOperators: {
+export declare const MatchingRuleOperators: {
     EQUAL: "=";
     LESS_THAN: "<";
     GREATER_THAN: ">";
@@ -19,12 +27,12 @@ export declare const RuleOperators: {
     GREATER_THAN_EQUAL: ">=";
     CONTAINS: "contains";
 };
-export declare type RuleOperator = typeof RuleOperators[keyof typeof RuleOperators];
-export declare const RuleGroupOperators: {
+export declare type MatchingRuleOperator = typeof MatchingRuleOperators[keyof typeof MatchingRuleOperators];
+export declare const MatchingGroupOperators: {
     AND: "AND";
     OR: "OR";
 };
-export declare type GroupRuleOperator = typeof RuleGroupOperators[keyof typeof RuleGroupOperators];
+export declare type MatchingRuleGroupOperator = typeof MatchingGroupOperators[keyof typeof MatchingGroupOperators];
 export declare type Action<O, T> = {
     data?: T;
     order?: number;
@@ -46,24 +54,24 @@ export interface FieldModifier {
 /**
  * Group of tag rules
  */
-export interface TagRuleGroup {
+export interface MatchingRuleGroup {
     name?: string;
     tags: string[];
-    operator: GroupRuleOperator;
-    operands: (TagRule | TagRuleGroup)[];
+    operator: MatchingRuleGroupOperator;
+    operands: (MatchingRule | MatchingRuleGroup)[];
     actions?: Action<Buxfer.Transaction, any>[];
 }
-export declare const TAG_RULE_GROUP_VALIDATION_ERRORS: {
+export declare const MATCHING_RULE_GROUP_VALIDATION_ERRORS: {
     NAME_REQUIRED: string;
     TAGS_EMPTY: string;
     OPERATOR_REQUIRED: string;
     OPERAND_EMPTY: string;
 };
-export declare const TAG_RULE_GROUP_VALIDATION_GROUPS: {
+export declare const MATCHING_RULE_GROUP_VALIDATION_GROUPS: {
     NESTED: string;
     ROOT: string;
 };
-export declare const TagRuleGroupSchema: ValidationSchema;
+export declare const MatchingRuleGroupSchema: ValidationSchema;
 export declare const TRANSACTION_VALIDATION_ERRORS: {
     DATE_REQUIRED: string;
     STATUS_REQUIRED: string;
@@ -82,18 +90,18 @@ export declare const TransactionSchema: ValidationSchema;
 /**
  * Interface for tag rule
  */
-export interface TagRule {
+export interface MatchingRule {
     name?: string;
     field: keyof Buxfer.Transaction;
-    operator: RuleOperator;
+    operator: MatchingRuleOperator;
     operands: string[];
 }
-export declare const TAG_RULE_VALIDATION_ERRORS: {
+export declare const MATCHING_RULE_VALIDATION_ERRORS: {
     FIELD_EMPTY: string;
     OPERATOR_REQUIRED: string;
     OPERAND_EMPTY: string;
 };
-export declare const TagRuleSchema: ValidationSchema;
+export declare const MatchingRuleSchema: ValidationSchema;
 /**
  * The model that represents an API error
  */

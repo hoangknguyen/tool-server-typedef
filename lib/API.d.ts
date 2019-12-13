@@ -28,11 +28,11 @@ export declare const MatchingRuleOperators: {
     CONTAINS: "contains";
 };
 export declare type MatchingRuleOperator = typeof MatchingRuleOperators[keyof typeof MatchingRuleOperators];
-export declare const MatchingGroupOperators: {
+export declare const MatchingRuleGroupOperators: {
     AND: "AND";
     OR: "OR";
 };
-export declare type MatchingRuleGroupOperator = typeof MatchingGroupOperators[keyof typeof MatchingGroupOperators];
+export declare type MatchingRuleGroupOperator = typeof MatchingRuleGroupOperators[keyof typeof MatchingRuleGroupOperators];
 export declare type Action<O, T> = {
     data?: T;
     order?: number;

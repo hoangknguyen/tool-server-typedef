@@ -41,12 +41,12 @@ export const MatchingRuleOperators = t({
 
 export type MatchingRuleOperator = typeof MatchingRuleOperators[keyof typeof MatchingRuleOperators];
 
-export const MatchingGroupOperators = t({
+export const MatchingRuleGroupOperators = t({
     AND: 'AND',
     OR : 'OR'
 });
 
-export type MatchingRuleGroupOperator = typeof MatchingGroupOperators[keyof typeof MatchingGroupOperators];
+export type MatchingRuleGroupOperator = typeof MatchingRuleGroupOperators[keyof typeof MatchingRuleGroupOperators];
 
 export type Action<O, T> = {
     data?: T,

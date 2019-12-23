@@ -124,3 +124,23 @@ export interface User {
     salt: string;
     roles: string[];
 }
+export declare const ReportingGroupTypes: {
+    EXPENSE: "expense";
+    INCOME: "income";
+};
+export declare const ReportingTagTypes: {
+    STRING: "string";
+    REPORTING_TYPE: "reporting_type";
+};
+export declare type ReportingGroup = {
+    name: string;
+    includeTags: ReportingTag[];
+    excludeTags: ReportingTag[];
+    reportingType: ReportingGroupType;
+};
+export declare type ReportingTag = {
+    name: string;
+    tagType: string;
+};
+export declare type ReportingGroupType = typeof ReportingGroupTypes[keyof typeof ReportingGroupTypes];
+export declare type ReportingTagType = typeof ReportingTagTypes[keyof typeof ReportingTagTypes];

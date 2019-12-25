@@ -51,6 +51,12 @@ export interface FieldModifier {
     field: keyof Buxfer.Transaction;
     value: Buxfer.Transaction[keyof Buxfer.Transaction];
 }
+export declare type ReportItem = {
+    name: string;
+    transactions: Buxfer.ExpandedTransaction[];
+    total: number;
+    reportingType: ReportingGroupType;
+};
 /**
  * Group of tag rules
  */

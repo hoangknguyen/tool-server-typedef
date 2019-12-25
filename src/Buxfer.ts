@@ -22,6 +22,12 @@ export namespace Buxfer {
         tags: string[]
     }
 
+    export interface ReportDetailsRequest {
+        minDate: string,
+        maxDate: string,
+        userId: string
+    }
+
     /**
      * Sum of all transactions tagged with the tag name
      */

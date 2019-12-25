@@ -1,49 +1,46 @@
 /**
  * The rule that instruct the tag processing engine to assign tag to a transaction
  */
-import {
-    ValidationSchema,
-    ValidationTypes
-}                 from 'class-validator';
-import { Buxfer } from './Buxfer';
-import { t }      from './utils/utils';
+import { ValidationSchema, ValidationTypes } from 'class-validator';
+import { Buxfer }                            from './Buxfer';
+import { t }                                 from './utils/utils';
 
 // we could configure the field type inside a property file
 // this is just to be used as a constant in the UI
 export const FieldTypes = t({
-    ARRAY  : 'array',
-    STRING : 'string',
-    NUMBER : 'number',
-    DATE   : 'date',
+    ARRAY: 'array',
+    STRING: 'string',
+    NUMBER: 'number',
+    DATE: 'date',
     BOOLEAN: 'boolean'
 });
 
 export type FieldType = typeof FieldTypes[keyof typeof FieldTypes];
 
 export const RuleActionTypes = t({
-    DELETE     : 'delete',
-    MODIFY     : 'modify',
-    ADD_TAGS   : 'add_tags',
+    DELETE: 'delete',
+    MODIFY: 'modify',
+    ADD_TAGS: 'add_tags',
     REMOVE_TAGS: 'remove_tags'
 });
 
 export type RuleActionType = typeof RuleActionTypes[keyof typeof RuleActionTypes];
 
 export const MatchingRuleOperators = t({
-    EQUAL             : '=',
-    LESS_THAN         : '<',
-    GREATER_THAN      : '>',
-    LESS_THAN_EQUAL   : '<=',
-    LIKE              : '~',
+    EQUAL: '=',
+    LESS_THAN: '<',
+    GREATER_THAN: '>',
+    LESS_THAN_EQUAL: '<=',
+    LIKE: '~',
     GREATER_THAN_EQUAL: '>=',
-    CONTAINS          : 'contains'
+    CONTAINS: 'contains'
 });
 
 export type MatchingRuleOperator = typeof MatchingRuleOperators[keyof typeof MatchingRuleOperators];
 
 export const MatchingRuleGroupOperators = t({
     AND: 'AND',
-    OR : 'OR'
+    OR: 'OR'
 });
 
 export type MatchingRuleGroupOperator = typeof MatchingRuleGroupOperators[keyof typeof MatchingRuleGroupOperators];
@@ -73,6 +70,12 @@ export interface FieldModifier {
     value: Buxfer.Transaction[keyof Buxfer.Transaction]
 }
 
+export type ReportItem = {
+    name: string,
+    transactions: Buxfer.ExpandedTransaction[],
+    total: number,
+    reportingType: ReportingGroupType
+}
 
 /**
  * Group of tag rules
@@ -86,112 +89,112 @@ export interface MatchingRuleGroup {
 }
 
 export const MATCHING_RULE_GROUP_VALIDATION_ERRORS = {
-    NAME_REQUIRED    : 'Rule Group name is required.',
-    TAGS_EMPTY       : 'Tags must not be empty.',
+    NAME_REQUIRED: 'Rule Group name is required.',
+    TAGS_EMPTY: 'Tags must not be empty.',
     OPERATOR_REQUIRED: 'Operator is required.',
-    OPERAND_EMPTY    : 'Operands must not be empty.'
+    OPERAND_EMPTY: 'Operands must not be empty.'
 };
 
 export const MATCHING_RULE_GROUP_VALIDATION_GROUPS = {
     NESTED: 'NESTED',
-    ROOT  : 'ROOT'
+    ROOT: 'ROOT'
 };
 
 export const MatchingRuleGroupSchema: ValidationSchema = {
-    name      : 'matchingRuleGroupSchema',
+    name: 'matchingRuleGroupSchema',
     properties: {
-        name    : [{
-            type   : ValidationTypes.IS_NOT_EMPTY,
+        name: [ {
+            type: ValidationTypes.IS_NOT_EMPTY,
             message: MATCHING_RULE_GROUP_VALIDATION_ERRORS.NAME_REQUIRED,
-            groups : [MATCHING_RULE_GROUP_VALIDATION_GROUPS.NESTED, MATCHING_RULE_GROUP_VALIDATION_GROUPS.ROOT]
-        }],
-        tags    : [{
-            type   : ValidationTypes.ARRAY_NOT_EMPTY,
+            groups: [ MATCHING_RULE_GROUP_VALIDATION_GROUPS.NESTED, MATCHING_RULE_GROUP_VALIDATION_GROUPS.ROOT ]
+        } ],
+        tags: [ {
+            type: ValidationTypes.ARRAY_NOT_EMPTY,
             message: MATCHING_RULE_GROUP_VALIDATION_ERRORS.TAGS_EMPTY,
-            groups : [MATCHING_RULE_GROUP_VALIDATION_GROUPS.ROOT]
-        }],
-        operator: [{
-            type   : ValidationTypes.IS_NOT_EMPTY,
+            groups: [ MATCHING_RULE_GROUP_VALIDATION_GROUPS.ROOT ]
+        } ],
+        operator: [ {
+            type: ValidationTypes.IS_NOT_EMPTY,
             message: MATCHING_RULE_GROUP_VALIDATION_ERRORS.OPERATOR_REQUIRED,
-            groups : [MATCHING_RULE_GROUP_VALIDATION_GROUPS.NESTED, MATCHING_RULE_GROUP_VALIDATION_GROUPS.ROOT]
-        }],
-        operands: [{
-            type   : ValidationTypes.ARRAY_NOT_EMPTY,
+            groups: [ MATCHING_RULE_GROUP_VALIDATION_GROUPS.NESTED, MATCHING_RULE_GROUP_VALIDATION_GROUPS.ROOT ]
+        } ],
+        operands: [ {
+            type: ValidationTypes.ARRAY_NOT_EMPTY,
             message: MATCHING_RULE_GROUP_VALIDATION_ERRORS.OPERAND_EMPTY,
-            groups : [MATCHING_RULE_GROUP_VALIDATION_GROUPS.NESTED, MATCHING_RULE_GROUP_VALIDATION_GROUPS.ROOT]
-        }]
+            groups: [ MATCHING_RULE_GROUP_VALIDATION_GROUPS.NESTED, MATCHING_RULE_GROUP_VALIDATION_GROUPS.ROOT ]
+        } ]
     }
 };
 
 export const TRANSACTION_VALIDATION_ERRORS = {
-    DATE_REQUIRED        : 'Transaction date is required.',
-    STATUS_REQUIRED      : 'Transaction status is required.',
-    TAGS_IS_ARRAY        : 'Transaction tags must be a list',
-    DESCRIPTION_REQUIRED : 'Transaction description is required.',
-    TYPE_REQUIRED        : 'Transaction type is required',
+    DATE_REQUIRED: 'Transaction date is required.',
+    STATUS_REQUIRED: 'Transaction status is required.',
+    TAGS_IS_ARRAY: 'Transaction tags must be a list',
+    DESCRIPTION_REQUIRED: 'Transaction description is required.',
+    TYPE_REQUIRED: 'Transaction type is required',
     ACCOUNT_TYPE_REQUIRED: 'Transaction account type is required',
-    AMOUNT_REQUIRED      : 'Transaction amount is required',
-    AMOUNT_IS_NUMBER     : 'Transaction amount must be a number'
+    AMOUNT_REQUIRED: 'Transaction amount is required',
+    AMOUNT_IS_NUMBER: 'Transaction amount must be a number'
 };
 
 export const TRANSACTION_VALIDATION_GROUPS = {
     BASIC: 'BASIC',
-    FULL : 'FULL'
+    FULL: 'FULL'
 };
 
 
 export const TransactionSchema: ValidationSchema = {
-    name      : 'transactionSchema',
+    name: 'transactionSchema',
     properties: {
-        date       : [
+        date: [
             {
-                type   : ValidationTypes.IS_NOT_EMPTY,
+                type: ValidationTypes.IS_NOT_EMPTY,
                 message: TRANSACTION_VALIDATION_ERRORS.DATE_REQUIRED,
-                groups : [TRANSACTION_VALIDATION_GROUPS.BASIC, TRANSACTION_VALIDATION_GROUPS.FULL]
+                groups: [ TRANSACTION_VALIDATION_GROUPS.BASIC, TRANSACTION_VALIDATION_GROUPS.FULL ]
             }
         ],
-        status     : [
+        status: [
             {
-                type   : ValidationTypes.IS_NOT_EMPTY,
+                type: ValidationTypes.IS_NOT_EMPTY,
                 message: TRANSACTION_VALIDATION_ERRORS.STATUS_REQUIRED,
-                groups : [TRANSACTION_VALIDATION_GROUPS.BASIC, TRANSACTION_VALIDATION_GROUPS.FULL]
+                groups: [ TRANSACTION_VALIDATION_GROUPS.BASIC, TRANSACTION_VALIDATION_GROUPS.FULL ]
             }
         ],
-        tags       : [
+        tags: [
             {
-                type   : ValidationTypes.IS_ARRAY,
+                type: ValidationTypes.IS_ARRAY,
                 message: TRANSACTION_VALIDATION_ERRORS.TAGS_IS_ARRAY,
-                groups : [TRANSACTION_VALIDATION_GROUPS.BASIC, TRANSACTION_VALIDATION_GROUPS.FULL]
+                groups: [ TRANSACTION_VALIDATION_GROUPS.BASIC, TRANSACTION_VALIDATION_GROUPS.FULL ]
             }
         ],
         description: [
             {
-                type   : ValidationTypes.IS_NOT_EMPTY,
+                type: ValidationTypes.IS_NOT_EMPTY,
                 message: TRANSACTION_VALIDATION_ERRORS.DESCRIPTION_REQUIRED,
-                groups : [TRANSACTION_VALIDATION_GROUPS.BASIC, TRANSACTION_VALIDATION_GROUPS.FULL]
+                groups: [ TRANSACTION_VALIDATION_GROUPS.BASIC, TRANSACTION_VALIDATION_GROUPS.FULL ]
             }
         ],
-        type       : [{
-            type   : ValidationTypes.IS_NOT_EMPTY,
+        type: [ {
+            type: ValidationTypes.IS_NOT_EMPTY,
             message: TRANSACTION_VALIDATION_ERRORS.TYPE_REQUIRED,
-            groups : [TRANSACTION_VALIDATION_GROUPS.FULL]
-        }],
-        accountType: [{
-            type   : ValidationTypes.IS_NOT_EMPTY,
+            groups: [ TRANSACTION_VALIDATION_GROUPS.FULL ]
+        } ],
+        accountType: [ {
+            type: ValidationTypes.IS_NOT_EMPTY,
             message: TRANSACTION_VALIDATION_ERRORS.ACCOUNT_TYPE_REQUIRED,
-            groups : [TRANSACTION_VALIDATION_GROUPS.FULL]
-        }],
-        amount     : [
+            groups: [ TRANSACTION_VALIDATION_GROUPS.FULL ]
+        } ],
+        amount: [
             {
-                type   : ValidationTypes.IS_NOT_EMPTY,
+                type: ValidationTypes.IS_NOT_EMPTY,
                 message: TRANSACTION_VALIDATION_ERRORS.AMOUNT_REQUIRED,
-                groups : [TRANSACTION_VALIDATION_GROUPS.FULL]
+                groups: [ TRANSACTION_VALIDATION_GROUPS.FULL ]
             },
             {
-                type       : ValidationTypes.IS_NUMBER,
+                type: ValidationTypes.IS_NUMBER,
                 constraints: [],
-                message    : TRANSACTION_VALIDATION_ERRORS.AMOUNT_IS_NUMBER,
-                groups     : [TRANSACTION_VALIDATION_GROUPS.FULL]
+                message: TRANSACTION_VALIDATION_ERRORS.AMOUNT_IS_NUMBER,
+                groups: [ TRANSACTION_VALIDATION_GROUPS.FULL ]
             }
         ]
     }
@@ -209,26 +212,26 @@ export interface MatchingRule {
 }
 
 export const MATCHING_RULE_VALIDATION_ERRORS = {
-    FIELD_EMPTY      : 'Field must not be empty.',
+    FIELD_EMPTY: 'Field must not be empty.',
     OPERATOR_REQUIRED: 'Operator is required.',
-    OPERAND_EMPTY    : 'Operands must not be empty.'
+    OPERAND_EMPTY: 'Operands must not be empty.'
 };
 
 export const MatchingRuleSchema: ValidationSchema = {
-    name      : 'matchingRuleSchema',
+    name: 'matchingRuleSchema',
     properties: {
-        field   : [{
-            type   : ValidationTypes.IS_NOT_EMPTY,
+        field: [ {
+            type: ValidationTypes.IS_NOT_EMPTY,
             message: MATCHING_RULE_VALIDATION_ERRORS.FIELD_EMPTY
-        }],
-        operator: [{
-            type   : ValidationTypes.IS_NOT_EMPTY,
+        } ],
+        operator: [ {
+            type: ValidationTypes.IS_NOT_EMPTY,
             message: MATCHING_RULE_VALIDATION_ERRORS.OPERATOR_REQUIRED
-        }],
-        operands: [{
-            type   : ValidationTypes.ARRAY_NOT_EMPTY,
+        } ],
+        operands: [ {
+            type: ValidationTypes.ARRAY_NOT_EMPTY,
             message: MATCHING_RULE_VALIDATION_ERRORS.OPERAND_EMPTY
-        }]
+        } ]
     }
 };
 

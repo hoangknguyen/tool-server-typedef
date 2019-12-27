@@ -5,6 +5,10 @@ export declare const MessageTypes: {
     DATA: "data";
     TRANSACTION: "transaction";
 };
+export declare const SocketEvents: {
+    DATA: "data";
+    MESSAGE: "message";
+};
 /**
  * Load client configuration then build the TYPE
  */

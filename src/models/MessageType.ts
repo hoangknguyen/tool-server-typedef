@@ -8,6 +8,11 @@ export const MessageTypes = t({
   TRANSACTION: 'transaction'
 });
 
+export const SocketEvents = t({
+  DATA   : 'data',
+  MESSAGE: 'message'
+});
+
 /**
  * Load client configuration then build the TYPE
  */

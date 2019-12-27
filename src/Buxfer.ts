@@ -19,14 +19,21 @@ export namespace Buxfer {
     export interface ReportRequest {
         minDate: string,
         maxDate: string,
+        isPreview: boolean,
         tags: string[]
     }
 
     export interface ReportDetailsRequest {
         minDate: string,
         maxDate: string,
-        userId: string
+        userId: string,
+        isPreview: boolean
     }
+
+    export type ResyncRequest = {} & ReportDetailsRequest;
+    export type ResyncResponse = {
+        id: string
+    };
 
     /**
      * Sum of all transactions tagged with the tag name

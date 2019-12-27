@@ -16,13 +16,19 @@ export declare namespace Buxfer {
     interface ReportRequest {
         minDate: string;
         maxDate: string;
+        isPreview: boolean;
         tags: string[];
     }
     interface ReportDetailsRequest {
         minDate: string;
         maxDate: string;
         userId: string;
+        isPreview: boolean;
     }
+    type ResyncRequest = {} & ReportDetailsRequest;
+    type ResyncResponse = {
+        id: string;
+    };
     /**
      * Sum of all transactions tagged with the tag name
      */

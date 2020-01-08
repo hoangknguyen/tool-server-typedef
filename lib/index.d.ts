@@ -6,4 +6,4 @@ export * from './models/Snippet';
 export * from './models/User';
 export * from './buxfer/buxfer.namespace';
 export * from './API';
-export * from './buxfer/buxfer.namespace';
+export * from './buxfer/';

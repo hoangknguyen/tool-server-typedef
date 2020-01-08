@@ -1,4 +1,4 @@
-import { ReportingGroup } from '../API';
+import { ReportingGroup } from '@buxfer/api.model';
 
 export type UserConfiguration = {
     userId: string,

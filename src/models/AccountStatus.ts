@@ -1,4 +1,4 @@
-import { t } from '../utils/utils';
+import { t } from '@utils/utils';
 // creating type
 export const AccountStatuses = t({
   PENDING: 'pending',

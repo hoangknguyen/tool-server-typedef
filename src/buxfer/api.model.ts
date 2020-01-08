@@ -1,5 +1,5 @@
-import { Buxfer } from '@buxfer/buxfer.namespace';
-import { t }      from '@utils/utils';
+import { t }      from '../utils/utils';
+import { Buxfer } from './buxfer.namespace';
 
 /**
  * The model represents the action of the user on the transaction. Each action

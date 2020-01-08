@@ -1,7 +1,7 @@
 /**
  * The rule that instruct the tag processing engine to assign tag to a transaction
  */
-import { t } from '@utils/utils';
+import { t } from './utils/utils';
 
 // we could configure the field type inside a property file
 // this is just to be used as a constant in the UI

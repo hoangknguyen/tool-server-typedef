@@ -150,3 +150,10 @@ export declare type ReportingTag = {
 };
 export declare type ReportingGroupType = typeof ReportingGroupTypes[keyof typeof ReportingGroupTypes];
 export declare type ReportingTagType = typeof ReportingTagTypes[keyof typeof ReportingTagTypes];
+/**
+ * BUXFER API request/response models
+ */
+export declare type SaveBuxferConfigurationRequest = {
+    userId: string;
+    matchingRuleGroups: MatchingRuleGroup[];
+};

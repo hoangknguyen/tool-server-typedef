@@ -28,3 +28,10 @@ export interface User {
     salt: string;
     roles: string[];
 }
+export declare type PaginableQueryResult<T> = {
+    currentPage: number;
+    totalPage: number;
+    totalItems: number;
+    pageSize: number;
+    results: T[];
+};

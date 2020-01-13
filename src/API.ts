@@ -38,4 +38,12 @@ export interface User {
     roles: string[];
 }
 
+export type PaginableQueryResult<T> = {
+    currentPage: number,
+    totalPage: number,
+    totalItems: number,
+    pageSize: number,
+    results: T[]
+};
+
 

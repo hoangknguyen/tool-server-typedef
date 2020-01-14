@@ -8,3 +8,6 @@ export declare type Snippet = {
     theme?: string;
     content: string;
 };
+export declare type SnippetSearchCriteria = Partial<{
+    [k in keyof Snippet]: any;
+}>;

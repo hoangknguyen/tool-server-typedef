@@ -8,3 +8,7 @@ export type Snippet = {
     theme?: string,
     content: string
 }
+
+export type SnippetSearchCriteria = Partial<{
+    [k in keyof Snippet]: any
+}>

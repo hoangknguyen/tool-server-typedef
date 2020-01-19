@@ -1,12 +1,13 @@
 {
   "name": "tool-server-typedef",
-  "version": "1.2.17",
+  "version": "1.2.18",
   "description": "tool-server Type Definition",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "scripts": {
     "build": "tsc",
-    "pack": "tsc && npm pack"
+    "pack": "tsc && npm pack",
+    "release": "npm-github-release"
   },
   "files": [
     "lib/**/*"
@@ -34,5 +35,7 @@
   "directories": {
     "lib": "lib"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "npm-github-release": "^0.12.0"
+  }
 }

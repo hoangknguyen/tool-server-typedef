@@ -5,5 +5,6 @@ export * from './models/MessageType';
 export * from './models/Snippet';
 export * from './models/User';
 export * from './buxfer/buxfer.namespace';
+export * from './buxfer/api.model';
+export * from './buxfer/buxfer.schema';
 export * from './API';
-export * from './buxfer/';

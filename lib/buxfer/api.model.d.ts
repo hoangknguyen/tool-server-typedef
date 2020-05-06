@@ -70,6 +70,13 @@ export declare type MonthlyReportItem = {
     toDate: string;
     items: ReportItem[];
 };
+declare const OperandTypes: {
+    DATE: "date";
+    NUMBER: "number";
+    INPUT: "input";
+    SELECT: "select";
+};
+export declare type OperandType = typeof OperandTypes[keyof typeof OperandTypes];
 /**
  * Interface for tag rule
  */
@@ -96,3 +103,4 @@ export interface MatchingRuleGroup {
     operands: (MatchingRule | MatchingRuleGroup)[];
     actions?: Action<Buxfer.Transaction, any>[];
 }
+export {};

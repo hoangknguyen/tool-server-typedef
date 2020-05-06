@@ -96,6 +96,15 @@ export type MonthlyReportItem = {
     items: ReportItem[]
 }
 
+const OperandTypes = t({
+    DATE: 'date',
+    NUMBER : 'number',
+    INPUT: 'input',
+    SELECT: 'select'
+});
+
+export type OperandType = typeof OperandTypes[keyof typeof OperandTypes];
+
 /**
  * Interface for tag rule
  */

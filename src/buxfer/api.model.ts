@@ -97,10 +97,11 @@ export type MonthlyReportItem = {
 }
 
 export const OperandTypes = t({
-    DATE: 'date',
-    NUMBER : 'number',
-    INPUT: 'input',
-    SELECT: 'select'
+    DATE  : 'date',
+    NUMBER: 'number',
+    INPUT : 'input',
+    SELECT: 'select',
+    LIST  : 'list'
 });
 
 export type OperandType = typeof OperandTypes[keyof typeof OperandTypes];
@@ -130,7 +131,7 @@ export interface MatchingRuleGroup {
     name?: string,
     tags: string[],
     operator: MatchingRuleGroupOperator,
-    operands: (MatchingRule | MatchingRuleGroup)[],
+    operands: ( MatchingRule | MatchingRuleGroup )[],
     actions?: Action<Buxfer.Transaction, any>[]
 }
 

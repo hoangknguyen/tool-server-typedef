@@ -75,6 +75,7 @@ export declare const OperandTypes: {
     NUMBER: "number";
     INPUT: "input";
     SELECT: "select";
+    LIST: "list";
 };
 export declare type OperandType = typeof OperandTypes[keyof typeof OperandTypes];
 /**

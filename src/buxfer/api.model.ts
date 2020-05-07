@@ -96,7 +96,7 @@ export type MonthlyReportItem = {
     items: ReportItem[]
 }
 
-const OperandTypes = t({
+export const OperandTypes = t({
     DATE: 'date',
     NUMBER : 'number',
     INPUT: 'input',

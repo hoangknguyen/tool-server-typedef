@@ -4,6 +4,10 @@ Wiki page: [Tool-server-typedef](https://hoangknguyen.atlassian.net/wiki/spaces/
 
 # Releases
 
+## 1.3.31
+
+- Added OperandType
+
 ## 1.2.21
 
 - Fixed release issue of 1.2.20 - a release of in-complete build.

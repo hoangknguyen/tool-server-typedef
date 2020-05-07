@@ -7,7 +7,7 @@
   "scripts": {
     "build": "tsc",
     "pack": "tsc && npm pack",
-    "release": "npm-github-release"
+    "release": "release-it"
   },
   "files": [
     "lib/**/*"
@@ -36,6 +36,9 @@
     "lib": "lib"
   },
   "devDependencies": {
-    "npm-github-release": "^0.13.0"
+    "release-it": "^13.5.8"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

@@ -4,7 +4,12 @@ Wiki page: [Tool-server-typedef](https://hoangknguyen.atlassian.net/wiki/spaces/
 
 # Releases
 
-## 1.3.31
+## 1.3.4
+
+- Added BuxferCredential
+- Updated  
+
+## 1.3.1
 
 - Added OperandType
 

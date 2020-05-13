@@ -7,6 +7,10 @@ export interface FieldModifier {
     field: keyof Buxfer.Transaction;
     value: Buxfer.Transaction[keyof Buxfer.Transaction];
 }
+export declare type BuxferCredential = {
+    username: string;
+    password: string;
+};
 export declare const ReportingGroupTypes: {
     EXPENSE: "expense";
     INCOME: "income";

@@ -10,6 +10,11 @@ export interface FieldModifier {
     value: Buxfer.Transaction[keyof Buxfer.Transaction]
 }
 
+export type BuxferCredential = {
+    username: string;
+    password: string;
+}
+
 export const ReportingGroupTypes = t({
     EXPENSE: 'expense',
     INCOME : 'income'

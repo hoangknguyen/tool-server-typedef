@@ -4,7 +4,11 @@ Wiki page: [Tool-server-typedef](https://hoangknguyen.atlassian.net/wiki/spaces/
 
 # Releases
 
-## 1.3.31
+## 1.3.4
+
+- REACT-51 #comment Moving BuxferCredential to typedef, updated UserConfiguration type  
+
+## 1.3.1
 
 - Added OperandType
 

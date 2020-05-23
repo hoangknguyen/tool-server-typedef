@@ -108,3 +108,16 @@ export interface MatchingRuleGroup {
     operands: (MatchingRule | MatchingRuleGroup)[];
     actions?: Action<Buxfer.Transaction, any>[];
 }
+export declare type SelectOption = {
+    code: string;
+    title: string;
+};
+export declare type Operand = {
+    ['type']: OperandType;
+    defaultValue?: string;
+    values?: SelectOption[];
+};
+export declare type OperatorOperand = {
+    field: keyof Buxfer.Transaction | 'accountType';
+    operands: Operand[];
+};

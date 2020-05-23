@@ -75,7 +75,6 @@ export type Action<O, T> = {
     doAction(o: O, chain: ActionChain<O>): O | undefined
 }
 
-
 export interface ActionChain<O> {
     doAction(o: O): O | undefined;
 
@@ -135,3 +134,18 @@ export interface MatchingRuleGroup {
     actions?: Action<Buxfer.Transaction, any>[]
 }
 
+export type SelectOption = {
+    code: string,
+    title: string
+};
+
+export type Operand = {
+    ['type']: OperandType,
+    defaultValue?: string,
+    values?: SelectOption[]
+};
+
+export type OperatorOperand = {
+    field: keyof Buxfer.Transaction | 'accountType',
+    operands: Operand[]
+}

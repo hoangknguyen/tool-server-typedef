@@ -28,7 +28,7 @@
   },
   "homepage": "https://github.com/hoangknguyen/tool-server-typedef#readme",
   "dependencies": {
-    "class-validator": "^0.11.0",
+    "class-validator": "0.11.0",
     "mongoose": "^5.9.12",
     "typescript": "^3.8.3"
   },
@@ -36,7 +36,7 @@
     "lib": "lib"
   },
   "devDependencies": {
-    "release-it": "^13.5.8"
+    "release-it": "^14.12.4"
   },
   "publishConfig": {
     "access": "public"

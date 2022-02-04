@@ -71,7 +71,7 @@ export const MatchingRuleGroupOperators = t({
 
 export type MatchingRuleGroupOperator = typeof MatchingRuleGroupOperators[keyof typeof MatchingRuleGroupOperators];
 
-export type Action<O, T> = {
+export type Action<O, T = any> = {
     data?: T,
     // keeping the order to make sure the action are run in the expected order
     order?: number,

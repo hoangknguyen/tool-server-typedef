@@ -53,7 +53,7 @@ export declare const MatchingRuleGroupOperators: {
     OR: "OR";
 };
 export declare type MatchingRuleGroupOperator = typeof MatchingRuleGroupOperators[keyof typeof MatchingRuleGroupOperators];
-export declare type Action<O, T> = {
+export declare type Action<O, T = any> = {
     data?: T;
     order?: number;
     t?: RuleActionType;

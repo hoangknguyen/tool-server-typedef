@@ -7,7 +7,7 @@ export interface FieldModifier {
     field: keyof Buxfer.Transaction;
     value: Buxfer.Transaction[keyof Buxfer.Transaction];
 }
-export declare type BuxferCredential = {
+export type BuxferCredential = {
     username: string;
     password: string;
 };
@@ -19,25 +19,25 @@ export declare const ReportingTagTypes: {
     STRING: "string";
     REPORTING_TYPE: "reporting_type";
 };
-export declare type ReportingGroup = {
+export type ReportingGroup = {
     name: string;
     includeTags: ReportingTag[];
     excludeTags: ReportingTag[];
     reportingType: ReportingGroupType;
 };
-export declare type ReportingTag = {
+export type ReportingTag = {
     name: string;
     tagType: string;
 };
-export declare type ReportingGroupType = typeof ReportingGroupTypes[keyof typeof ReportingGroupTypes];
-export declare type ReportingTagType = typeof ReportingTagTypes[keyof typeof ReportingTagTypes];
+export type ReportingGroupType = typeof ReportingGroupTypes[keyof typeof ReportingGroupTypes];
+export type ReportingTagType = typeof ReportingTagTypes[keyof typeof ReportingTagTypes];
 export declare const RuleActionTypes: {
     DELETE: "delete";
     MODIFY: "modify";
     ADD_TAGS: "add_tags";
     REMOVE_TAGS: "remove_tags";
 };
-export declare type RuleActionType = typeof RuleActionTypes[keyof typeof RuleActionTypes];
+export type RuleActionType = typeof RuleActionTypes[keyof typeof RuleActionTypes];
 export declare const MatchingRuleOperators: {
     EQUAL: "=";
     LESS_THAN: "<";
@@ -47,13 +47,13 @@ export declare const MatchingRuleOperators: {
     GREATER_THAN_EQUAL: ">=";
     CONTAINS: "contains";
 };
-export declare type MatchingRuleOperator = typeof MatchingRuleOperators[keyof typeof MatchingRuleOperators];
+export type MatchingRuleOperator = typeof MatchingRuleOperators[keyof typeof MatchingRuleOperators];
 export declare const MatchingRuleGroupOperators: {
     AND: "AND";
     OR: "OR";
 };
-export declare type MatchingRuleGroupOperator = typeof MatchingRuleGroupOperators[keyof typeof MatchingRuleGroupOperators];
-export declare type Action<O, T = any> = {
+export type MatchingRuleGroupOperator = typeof MatchingRuleGroupOperators[keyof typeof MatchingRuleGroupOperators];
+export type Action<O, T = any> = {
     data?: T;
     order?: number;
     t?: RuleActionType;
@@ -63,13 +63,13 @@ export interface ActionChain<O> {
     doAction(o: O): O | undefined;
     hasNext(): boolean;
 }
-export declare type ReportItem = {
+export type ReportItem = {
     name: string;
     transactions: Buxfer.ExpandedTransaction[];
     total: number;
     reportingType: ReportingGroupType;
 };
-export declare type MonthlyReportItem = {
+export type MonthlyReportItem = {
     fromDate: string;
     toDate: string;
     items: ReportItem[];
@@ -81,7 +81,7 @@ export declare const OperandTypes: {
     SELECT: "select";
     LIST: "list";
 };
-export declare type OperandType = typeof OperandTypes[keyof typeof OperandTypes];
+export type OperandType = typeof OperandTypes[keyof typeof OperandTypes];
 /**
  * Interface for tag rule
  */
@@ -94,7 +94,7 @@ export interface MatchingRule {
 /**
  * BUXFER API request/response models
  */
-export declare type SaveBuxferConfigurationRequest = {
+export type SaveBuxferConfigurationRequest = {
     userId: string;
     matchingRuleGroups: MatchingRuleGroup[];
 };
@@ -108,16 +108,16 @@ export interface MatchingRuleGroup {
     operands: (MatchingRule | MatchingRuleGroup)[];
     actions?: Action<Buxfer.Transaction, any>[];
 }
-export declare type SelectOption = {
+export type SelectOption = {
     code: string;
     title: string;
 };
-export declare type Operand = {
+export type Operand = {
     ['type']: OperandType;
     defaultValue?: string;
     values?: SelectOption[];
 };
-export declare type OperatorOperand = {
+export type OperatorOperand = {
     field: keyof Buxfer.Transaction | 'accountType';
     operands: Operand[];
 };

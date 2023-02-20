@@ -5,7 +5,7 @@ export declare const FieldTypes: {
     DATE: "date";
     BOOLEAN: "boolean";
 };
-export declare type FieldType = typeof FieldTypes[keyof typeof FieldTypes];
+export type FieldType = typeof FieldTypes[keyof typeof FieldTypes];
 /**
  * The model that represents an API error
  */
@@ -28,7 +28,7 @@ export interface User {
     salt: string;
     roles: string[];
 }
-export declare type PaginableQueryResult<T> = {
+export type PaginableQueryResult<T> = {
     currentPage: number;
     totalPage: number;
     totalItems: number;

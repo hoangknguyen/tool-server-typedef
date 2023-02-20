@@ -3,4 +3,4 @@ export declare const SyncAccountTypes: {
     VIETCOMBANK: "VIETCOMBANK";
     WALLET: "WALLET";
 };
-export declare type SyncAccountType = typeof SyncAccountTypes[keyof typeof SyncAccountTypes];
+export type SyncAccountType = typeof SyncAccountTypes[keyof typeof SyncAccountTypes];

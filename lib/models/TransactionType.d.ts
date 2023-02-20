@@ -7,4 +7,4 @@ export declare const TransactionTypes: {
     PAID_FOR_FRIEND: "paidForFriend";
     LOAN: "loan";
 };
-export declare type TransactionType = typeof TransactionTypes[keyof typeof TransactionTypes];
+export type TransactionType = typeof TransactionTypes[keyof typeof TransactionTypes];

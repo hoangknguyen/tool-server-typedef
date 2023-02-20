@@ -12,4 +12,4 @@ export declare const SocketEvents: {
 /**
  * Load client configuration then build the TYPE
  */
-export declare type MessageType = typeof MessageTypes[keyof typeof MessageTypes];
+export type MessageType = typeof MessageTypes[keyof typeof MessageTypes];

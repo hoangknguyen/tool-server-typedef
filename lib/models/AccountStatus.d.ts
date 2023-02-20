@@ -3,4 +3,4 @@ export declare const AccountStatuses: {
     CLEARED: "cleared";
     COMPLETED: "completed";
 };
-export declare type AccountStatus = typeof AccountStatuses[keyof typeof AccountStatuses];
+export type AccountStatus = typeof AccountStatuses[keyof typeof AccountStatuses];

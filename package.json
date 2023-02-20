@@ -28,7 +28,7 @@
   },
   "homepage": "https://github.com/hoangknguyen/tool-server-typedef#readme",
   "dependencies": {
-    "class-validator": "0.14.0",
+    "class-validator": "0.11.0",
     "mongoose": "^6.9.2",
     "typescript": "^4.9.5"
   },

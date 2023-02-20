@@ -167,11 +167,7 @@ export namespace Buxfer {
     }
 
     export interface AddTransactionResponse {
-        response: {
-            status: string,
-            transactionAdded: boolean,
-            parseStatus: string
-        }
+        response: ExpandedTransaction
     }
 
     export interface ExpandedTransaction {
@@ -196,7 +192,8 @@ export namespace Buxfer {
             id: number,
             name: string
         },
-        isFutureDated: boolean
+        isFutureDated: boolean,
+        isPending: boolean
     }
 }
 
